@@ -35,11 +35,11 @@ Then: The number of active cases and the total deaths caused by covid-19 is disp
 
 
 **Roles:**
-Surabhi Kulkarni – Back-end Developer\
-Daya Nayak – Dev Ops\
-Shweta Shah – Front-end Developer \
-Likhitha Ramaprasad – Back-end Developer\
-Laasya Akunuru – Business Analyst
+-Surabhi Kulkarni – Back-end Developer\
+-Daya Nayak – Dev Ops\
+-Shweta Shah – Front-end Developer \
+-Likhitha Ramaprasad – Back-end Developer\
+-Laasya Akunuru – Business Analyst
 
 **Meeting Time:**
 Tuesday – 6pm to 6.30pm\
