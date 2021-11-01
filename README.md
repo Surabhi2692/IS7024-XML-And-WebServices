@@ -22,25 +22,25 @@ Functional Requirements:
 **Assumption:**
 >The user is present within United States
 
-Given- The COVID-19 vaccine data
-When- Filtering by State or Month and Year
-Then- The number of vaccines allocated over a period of time (Month or Year) for the State will be provided.  
+Given- The COVID-19 vaccine data\
+When- Filtering by state or month and Year\
+Then- The number of vaccines allocated over a period of time (Month or Year) for the state will be provided.  
 
 **Scenerio 2:**
 >The User wants to see the current deaths in particular state and month caused by Covid-19.
 
-Given: The Covid-19 cases and deaths data is available.
-When: User wants to know deaths in particular state in particular month.
+Given: The Covid-19 cases and deaths data is available.\
+When: User wants to know deaths in particular state in particular month.\
 Then: The number of active cases and the total deaths caused by covid-19 is displayed.
 
 
 **Roles:**
-Surabhi Kulkarni – Back-end Developer
-Daya Nayak – Dev Ops
-Shweta Shah – Front-end Developer 
-Likhitha Ramaprasad – Front-end Developer
+Surabhi Kulkarni – Back-end Developer\
+Daya Nayak – Dev Ops\
+Shweta Shah – Front-end Developer \
+Likhitha Ramaprasad – Back-end Developer\
 Laasya Akunuru – Business Analyst
 
 **Meeting Time:**
-Tuesday – 6pm to 6.30pm 
+Tuesday – 6pm to 6.30pm\
 Friday – 1pm to 2pm
