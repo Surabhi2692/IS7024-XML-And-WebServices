@@ -1,4 +1,4 @@
-# The Modern Illuminati
+# Covid Tracker
 ---
  ## Design Document  
  
