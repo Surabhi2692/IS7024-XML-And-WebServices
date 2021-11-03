@@ -20,10 +20,8 @@ Coronavirus disease 2019 (COVID-19) dominated 2020 and 2021. This is a look back
 
 1. Total number of vaccine doses till date 
 2. Total number of deaths registered till date
-2. State-wise death
-3. State-wise vaccination
-4. Month-wise death
-5. Month-wise vaccination
+3. State-wise death
+4. State-wise vaccination
 
 ---  
 
