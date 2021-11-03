@@ -4,11 +4,11 @@
  
  ##### Team Members  
  
--Surabhi Kulkarni
--Daya Nayak
--Shweta Shah
--Likhitha Ramaprasad
--Laasya Akunuru
+-Surabhi Kulkarni\
+-Daya Nayak\
+-Shweta Shah\
+-Likhitha Ramaprasad\
+-Laasya Akunuru\
  
  ---
  
@@ -76,10 +76,11 @@ Then: Display one result showing COVID-19 new cases and new deaths recorded and 
 
  ## Team Composition  
  
- ##### Scrum Roles
+ ##### Scrum Roles:
 -Business Analyst – Laasya Akunuru\
 -Back-End Developers – Surabhi Kulkarni and Likhitha Ramaprasad\
 -Front-end Developer – Shweta Shah\
 -DevOps – Daya Nayak
  
- ##### Meeting Time: 3 PM to 6 PM on Tuesdays and Fridays
+ ##### Meeting Time: 
+ Tuesdays and Fridays - 3:00 PM to 4:00 PM
