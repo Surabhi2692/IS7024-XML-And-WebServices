@@ -8,7 +8,7 @@
 -Daya Nayak\
 -Shweta Shah\
 -Likhitha Ramaprasad\
--Laasya Akunuru\
+-Laasya Akunuru
  
  ---
  
@@ -16,10 +16,9 @@
  
 Coronavirus disease 2019 (COVID-19) dominated 2020 and 2021. This is a look back at how the pandemic evolved and progressed through the year, which closed with the arrival of vaccines, but also continued challenges.
 
-1. Total number of vaccine doses till date 
-2. Total number of deaths registered till date
-3. State-wise death
-4. State-wise vaccination
+1. State-wise total number of vaccines administered till date 
+2. State-wise total number of cases reported and deaths recorded till date
+3. State-wise daily statistics of new COVID-19 cases, deaths and vaccines administered.
 
 ---  
 
@@ -27,7 +26,7 @@ Coronavirus disease 2019 (COVID-19) dominated 2020 and 2021. This is a look back
 
 1. United States COVID 19 Cases and Deaths by State: https://data.cdc.gov/Case-Surveillance/United-States-COVID-19-Cases-and-Deaths-by-State-o/9mfq-cb36/data
 
-2. Covid-19 vaccination trends in the united states national https://catalog.data.gov/dataset/covid-19-vaccination-trends-in-the-united-statesnational/resource/571e619f-4e4d-42ce-b7ff-4fff5c37d205
+2. Covid-19 Vaccination Trends in the United States-National https://catalog.data.gov/dataset/covid-19-vaccination-trends-in-the-united-statesnational/resource/571e619f-4e4d-42ce-b7ff-4fff5c37d205
 
 ---  
 
@@ -39,7 +38,7 @@ Scenario:  The user wants to view the state wise COVID-19 vaccination trends.\
 Given: A feed of COVID-19 vaccination trends in the United States.\
 When: User is looking for vaccination trend in a particular state.\
 Then: Display one result showing vaccination trend for the state entered by the user with attributes such as:
-1. State
+1. State Name
 2. Date
 3. Total vaccines administered
 4. Total dose #1 administered
@@ -51,7 +50,7 @@ Scenario:  The user wants to view the state wise COVID-19 cases and death toll.\
 Given: A feed of COVID-19 cases and deaths in the United States.\
 When: User is looking for COVID-19 cases and death toll in a particular state.\
 Then: Display one result showing COVID-19 cases and death toll for the state entered by the user with attributes such as:
-1. State
+1. State Name
 2. Date
 3. Total COVID-19 cases reported
 4. Total deaths recorded
@@ -64,7 +63,7 @@ Scenario:  The user wants to view daily statistics of COVID-19 new cases,new dea
 Given: A feed of COVID-19 new cases, new deaths and new vaccination records in the United States.\
 When: User is looking for COVID-19 cases and death toll in a particular state.\
 Then: Display one result showing COVID-19 new cases and new deaths recorded and vaccines administered daily for the state entered by the user with attributes such as:
-1. State
+1. State Name
 2. Date
 3. New COVID-19 cases reported
 4. New deaths recorded
@@ -77,10 +76,10 @@ Then: Display one result showing COVID-19 new cases and new deaths recorded and 
  ## Team Composition  
  
  ##### Scrum Roles:
--Business Analyst – Laasya Akunuru\
--Back-End Developers – Surabhi Kulkarni and Likhitha Ramaprasad\
--Front-end Developer – Shweta Shah\
--DevOps – Daya Nayak
+1. Business Analyst – Laasya Akunuru
+2. Back-End Developers – Surabhi Kulkarni and Likhitha Ramaprasad
+3. Front-end Developer – Shweta Shah
+4. DevOps – Daya Nayak
  
- ##### Meeting Time: 
+ ##### Meeting Times: 
  Tuesdays and Fridays - 3:00 PM to 4:00 PM
