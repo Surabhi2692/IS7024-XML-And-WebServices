@@ -10,8 +10,7 @@
 -Likhitha Ramaprasad – Back-end Developer\
 -Laasya Akunuru – Business Analyst 
  
- Meeting Time: 3 PM to 6 PM on Tuesday and Fridays 
- 
+
  ---
  
  ## Introduction  
@@ -36,9 +35,9 @@ Coronavirus disease 2019 (COVID-19) dominated 2020 and 2021. This is a look back
 
 #### Requirement 1.1  
 
-Scenario:  The user wants to view the state wise COVID-19 vaccination trends.
-Given: A feed of COVID-19 vaccination trends in the United States.
-When: User is looking for vaccination trend in a particular state.
+Scenario:  The user wants to view the state wise COVID-19 vaccination trends.\
+Given: A feed of COVID-19 vaccination trends in the United States.\
+When: User is looking for vaccination trend in a particular state.\
 Then: Display one result showing vaccination trend for the state entered by the user with attributes such as:
 1. State
 2. Date
@@ -48,9 +47,9 @@ Then: Display one result showing vaccination trend for the state entered by the 
 
 #### Requirement 1.2  
 
-Scenario:  The user wants to view the state wise COVID-19 cases and death toll.
-Given: A feed of COVID-19 cases and deaths in the United States.
-When: User is looking for COVID-19 cases and death toll in a particular state.
+Scenario:  The user wants to view the state wise COVID-19 cases and death toll.\
+Given: A feed of COVID-19 cases and deaths in the United States.\
+When: User is looking for COVID-19 cases and death toll in a particular state.\
 Then: Display one result showing COVID-19 cases and death toll for the state entered by the user with attributes such as:
 1. State
 2. Date
@@ -59,9 +58,9 @@ Then: Display one result showing COVID-19 cases and death toll for the state ent
 
 #### Requirement 1.3  
 
-Scenario:  The user wants to view daily statistics of COVID-19 new cases,new deaths recorded and vaccines administered.
-Given: A feed of COVID-19 new cases, new deaths and new vaccination records in the United States.
-When: User is looking for COVID-19 cases and death toll in a particular state.
+Scenario:  The user wants to view daily statistics of COVID-19 new cases,new deaths recorded and vaccines administered.\
+Given: A feed of COVID-19 new cases, new deaths and new vaccination records in the United States.\
+When: User is looking for COVID-19 cases and death toll in a particular state.\
 Then: Display one result showing COVID-19 new cases and new deaths recorded and vaccines administered daily for the state entered by the user with attributes such as:
 1. State
 2. Date
@@ -73,5 +72,5 @@ Then: Display one result showing COVID-19 new cases and new deaths recorded and 
 
 ---
 
-
+Meeting Time: 3 PM to 6 PM on Tuesdays and Fridays
 
