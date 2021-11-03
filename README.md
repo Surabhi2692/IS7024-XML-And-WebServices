@@ -55,8 +55,6 @@ Then: Display one result showing COVID-19 cases and death toll for the state ent
 3. Total COVID-19 cases reported
 4. Total deaths recorded
 
----
-
 #### Requirement 1.3  
 
 Scenario:  The user wants to view daily statistics of COVID-19 new cases,new deaths recorded and vaccines administered.\
