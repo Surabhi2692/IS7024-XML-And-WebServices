@@ -2,15 +2,14 @@
 ---
  ## Design Document  
  
- ##### Team Composition  
+ ##### Team Members  
  
--Surabhi Kulkarni – Back-end Developer\
--Daya Nayak – Dev Ops\
--Shweta Shah – Front-end Developer \
--Likhitha Ramaprasad – Back-end Developer\
--Laasya Akunuru – Business Analyst 
+-Surabhi Kulkarni
+-Daya Nayak
+-Shweta Shah
+-Likhitha Ramaprasad
+-Laasya Akunuru
  
-
  ---
  
  ## Introduction  
@@ -29,6 +28,7 @@ Coronavirus disease 2019 (COVID-19) dominated 2020 and 2021. This is a look back
 1. United States COVID 19 Cases and Deaths by State: https://data.cdc.gov/Case-Surveillance/United-States-COVID-19-Cases-and-Deaths-by-State-o/9mfq-cb36/data
 
 2. Covid-19 vaccination trends in the united states national https://catalog.data.gov/dataset/covid-19-vaccination-trends-in-the-united-statesnational/resource/571e619f-4e4d-42ce-b7ff-4fff5c37d205
+
 ---  
 
 ## Functional Requirements  
@@ -56,6 +56,8 @@ Then: Display one result showing COVID-19 cases and death toll for the state ent
 3. Total COVID-19 cases reported
 4. Total deaths recorded
 
+---
+
 #### Requirement 1.3  
 
 Scenario:  The user wants to view daily statistics of COVID-19 new cases,new deaths recorded and vaccines administered.\
@@ -72,5 +74,12 @@ Then: Display one result showing COVID-19 new cases and new deaths recorded and 
 
 ---
 
-Meeting Time: 3 PM to 6 PM on Tuesdays and Fridays
-
+ ## Team Composition  
+ 
+ ##### Scrum Roles
+-Business Analyst – Laasya Akunuru\
+-Back-End Developers – Surabhi Kulkarni and Likhitha Ramaprasad\
+-Front-end Developer – Shweta Shah\
+-DevOps – Daya Nayak
+ 
+ ##### Meeting Time: 3 PM to 6 PM on Tuesdays and Fridays
