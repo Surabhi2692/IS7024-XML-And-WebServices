@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var covidCases = (CovidTracker.Covid19CasesAndDeaths[]) ViewData["Covid19CasesAndDeaths"];
 }
 
 <div class="text-center">
