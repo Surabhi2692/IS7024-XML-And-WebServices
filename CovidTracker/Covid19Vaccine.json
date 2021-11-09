@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/Covid19VaccineElement"
+  },
+  "definitions": {
+    "Covid19VaccineElement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "mmwr_week": {
+          "type": "string",
+          "format": "integer"
+        },
+        "location": {
+          "type": "string"
+        },
+        "administered_daily": {
+          "type": "string",
+          "format": "integer"
+        },
+        "administered_cumulative": {
+          "type": "string",
+          "format": "integer"
+        },
+        "administered_7_day_rolling": {
+          "type": "string",
+          "format": "integer"
+        },
+        "admin_dose_1_daily": {
+          "type": "string",
+          "format": "integer"
+        },
+        "admin_dose_1_cumulative": {
+          "type": "string",
+          "format": "integer"
+        },
+        "admin_dose_1_day_rolling": {
+          "type": "string",
+          "format": "integer"
+        },
+        "date_type": {
+          "$ref": "#/definitions/DateType"
+        },
+        "administered_daily_change": {
+          "type": "string",
+          "format": "integer"
+        },
+        "administered_daily_change_1": {
+          "type": "string",
+          "format": "integer"
+        },
+        "series_complete_daily": {
+          "type": "string",
+          "format": "integer"
+        },
+        "series_complete_cumulative": {
+          "type": "string",
+          "format": "integer"
+        },
+        "series_complete_day_rolling": {
+          "type": "string",
+          "format": "integer"
+        },
+        "booster_daily": {
+          "type": "string",
+          "format": "integer"
+        },
+        "booster_cumulative": {
+          "type": "string",
+          "format": "integer"
+        },
+        "booster_7_day_rolling_average": {
+          "type": "string",
+          "format": "integer"
+        }
+      },
+      "required": [
+        "admin_dose_1_cumulative",
+        "admin_dose_1_daily",
+        "admin_dose_1_day_rolling",
+        "administered_7_day_rolling",
+        "administered_cumulative",
+        "administered_daily",
+        "administered_daily_change",
+        "administered_daily_change_1",
+        "booster_7_day_rolling_average",
+        "booster_cumulative",
+        "booster_daily",
+        "date",
+        "date_type",
+        "location",
+        "mmwr_week",
+        "series_complete_cumulative",
+        "series_complete_daily",
+        "series_complete_day_rolling"
+      ],
+      "title": "Covid19VaccineElement"
+    },
+    "DateType": {
+      "type": "string",
+      "enum": [
+        "Report",
+        "Admin"
+      ],
+      "title": "DateType"
+    }
+  }
+}

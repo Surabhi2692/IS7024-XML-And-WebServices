@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/Covid19CasesAndDeath"
+  },
+  "definitions": {
+    "Covid19CasesAndDeath": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "submission_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "state": {
+          "$ref": "#/definitions/State"
+        },
+        "tot_cases": {
+          "type": "string",
+          "format": "integer"
+        },
+        "conf_cases": {
+          "type": "string"
+        },
+        "prob_cases": {
+          "type": "string",
+          "format": "integer"
+        },
+        "new_case": {
+          "type": "string"
+        },
+        "pnew_case": {
+          "type": "string",
+          "format": "integer"
+        },
+        "tot_death": {
+          "type": "string",
+          "format": "integer"
+        },
+        "conf_death": {
+          "type": "string"
+        },
+        "prob_death": {
+          "type": "string",
+          "format": "integer"
+        },
+        "new_death": {
+          "type": "string"
+        },
+        "pnew_death": {
+          "type": "string",
+          "format": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "consent_cases": {
+          "$ref": "#/definitions/Consent"
+        },
+        "consent_deaths": {
+          "$ref": "#/definitions/Consent"
+        }
+      },
+      "required": [
+        "created_at",
+        "new_case",
+        "new_death",
+        "state",
+        "submission_date",
+        "tot_cases",
+        "tot_death"
+      ],
+      "title": "Covid19CasesAndDeath"
+    },
+    "Consent": {
+      "type": "string",
+      "enum": [
+        "Agree",
+        "Not agree",
+        "N/A"
+      ],
+      "title": "Consent"
+    },
+    "State": {
+      "type": "string",
+      "enum": [
+        "CA",
+        "NE",
+        "ME",
+        "MS",
+        "NH",
+        "NV",
+        "AL",
+        "GU",
+        "CT",
+        "WI",
+        "ND",
+        "IN",
+        "MO",
+        "MD",
+        "ID",
+        "DE",
+        "IL",
+        "MI",
+        "WA",
+        "VT",
+        "NC",
+        "MT",
+        "VI"
+      ],
+      "title": "State"
+    }
+  }
+}
