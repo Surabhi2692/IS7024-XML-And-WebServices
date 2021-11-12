@@ -11,19 +11,39 @@ namespace CovidTracker.Pages
 {
     public class Covid19VaccinesModel : PageModel
     {
+        public string Query;
         [BindProperty]
         public SelectList StateList { get; set; }
         public string SearchState { get; set; }
         public Dictionary<string, string> statesDictionary { get; set; }
-
-        public void OnGet(string q)
+        public void OnGet(string query)
         {
-            InitStateDropdown(); 
+            InitStateDropdown();
+            Query = query;
             using (var webClient = new WebClient())
             {
                 string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/rh2h-3yt2.json");
                 var covid19Vaccines = Vaccines.Covid19Vaccine.FromJson(jsonString);
-                ViewData["Covid19Vaccines"] = covid19Vaccines;
+
+
+                if (!string.IsNullOrWhiteSpace(query))
+                {
+                    var covid19VaccineList = covid19Vaccines.ToList();
+                    var stateWiseVaccines = covid19VaccineList.FindAll(x => string.Equals(x.Location, query, StringComparison.OrdinalIgnoreCase)).Where(x => x.DateType.ToString() == "Report").ToList();
+                    if (stateWiseVaccines != null && stateWiseVaccines.Count > 0)
+                    {
+                        var orderedStateWiseVaccines = stateWiseVaccines.OrderByDescending(x => x.Date).ToArray();
+                        ViewData["Covid19Vaccines"] = orderedStateWiseVaccines[0];
+                    }
+                    else
+                    {
+                        ViewData["Covid19Vaccines"] = null;
+                    }
+                }
+                else
+                {
+                    ViewData["Covid19Vaccines"] = null;
+                }
             }
         }
 
@@ -83,9 +103,10 @@ namespace CovidTracker.Pages
                 { "WI", "Wisconsin" },
                 { "WY", "Wyoming" }
             };
+        }
 
-            //ViewData["SearchState"] = new SelectList(statesDictionary, "State", "Name");
+       
         }
 
     }
-}
+
