@@ -25,7 +25,6 @@ namespace CovidTracker.Pages
             {
                 string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
                 var covid19CasesAndDeaths = CasesAndDeaths.Covid19CasesAndDeaths.FromJson(jsonString);
-                ViewData["Covid19CasesAndDeaths"] = covid19CasesAndDeaths[0];
 
 
                 if(!string.IsNullOrWhiteSpace(query))
