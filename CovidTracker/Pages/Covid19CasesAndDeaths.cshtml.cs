@@ -12,13 +12,12 @@ namespace CovidTracker.Pages
     public class Covid19CasesAndDeathsModel : PageModel
     {
         public string Query;
-        public void OnGet(string query)
         [BindProperty]
         public SelectList StateList { get; set; }
         public string SearchState { get; set; }
         public Dictionary<string, string> statesDictionary { get; set; }
 
-        public void OnGet(string q)
+        public void OnGet(string query)
         {
             InitStateDropdown();
             Query = query;
