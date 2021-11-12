@@ -11,7 +11,6 @@ namespace CovidTracker.Pages
 {
     public class Covid19CasesAndDeathsModel : PageModel
     {
-        public string Query;
         [BindProperty]
         public SelectList StateList { get; set; }
         public string SearchState { get; set; }

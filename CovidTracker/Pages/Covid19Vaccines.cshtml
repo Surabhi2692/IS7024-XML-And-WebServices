@@ -1,7 +1,7 @@
 ﻿@page
 @model CovidTracker.Pages.Covid19VaccinesModel 
 @{
-    CovidTracker.Vaccines.Covid19Vaccine covid19Vaccines = (CovidTracker.Vaccines.Covid19Vaccine)ViewData["Covid19Vaccine"];
+    CovidTracker.Vaccines.Covid19Vaccine covid19Vaccines = (CovidTracker.Vaccines.Covid19Vaccine)ViewData["Covid19Vaccines"];
 }
 
 <div class="container">
@@ -49,25 +49,25 @@
                             @Model.statesDictionary[covid19Vaccines.Location.ToUpper()]
                         </dd>
                         <dt class="col-sm-6">
-                            Administered Cumulative
+                            Total Doses Administered
                         </dt>
                         <dd class="col-sm-6">
                             @covid19Vaccines.AdministeredCumulative
                         </dd>
                         <dt class="col-sm-6">
-                            Admin Dose1 Cumulative
+                            Totat Dose 1 Administered
                         </dt>
                         <dd class="col-sm-6">
                             @covid19Vaccines.AdminDose1_Cumulative
                         </dd>
                         <dt class="col-sm-6">
-                            Series Complete Cumulative
+                            Total Series Complete
                         </dt>
                         <dd class="col-sm-6">
                             @covid19Vaccines.SeriesCompleteCumulative
                         </dd>
                         <dt class="col-sm-6">
-                            Booster Cumulative
+                            Total Booster Doses Administered
                         </dt>
                         <dd class="col-sm-6">
                             @covid19Vaccines.BoosterCumulative
@@ -97,26 +97,26 @@
                         <dd class="col-sm-6">
                             @Model.statesDictionary[covid19Vaccines.Location.ToUpper()]
                         </dd>
+                        <dt class="col-sm-6">
+                            Daily Doses Administered
+                        </dt>
                         <dd class="col-sm-6">
                             @covid19Vaccines.AdministeredDaily
                         </dd>
                         <dt class="col-sm-6">
-                            Administered Cumulative
-                        </dt>
-                        <dt class="col-sm-6">
-                            Administered Dose 1 Daily
+                            Daily Dose 1 Administered
                         </dt>
                         <dd class="col-sm-6">
                             @covid19Vaccines.AdminDose1_Daily
                         </dd>
                         <dt class="col-sm-6">
-                            Series Complete Daily
+                            Daily Series Complete
                         </dt>
                         <dd class="col-sm-6">
                             @covid19Vaccines.SeriesCompleteDaily
                         </dd>
                         <dt class="col-sm-6">
-                            BoosterDailyS
+                            Daily Booster Doses Administered
                         </dt>
                         <dd class="col-sm-6">
                             @covid19Vaccines.BoosterDaily
