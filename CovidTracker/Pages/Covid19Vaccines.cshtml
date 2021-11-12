@@ -1,4 +1,137 @@
 ﻿@page
-@model CovidTracker.Pages.Covid19VaccinesModel
+@model CovidTracker.Pages.Covid19VaccinesModel 
 @{
+    CovidTracker.Vaccines.Covid19Vaccine covid19Vaccines = (CovidTracker.Vaccines.Covid19Vaccine)ViewData["Covid19Vaccine"];
 }
+
+<div class="container">
+    <br />
+    <h2>COVID19 Vaccines</h2>
+    <div>
+        @*<form method="get" class="row mb-3 ml-1">
+                <div class="form-group row">
+                    <label for="SearchState" class="control-label col-sm-6 font-weight-bold">Enter State</label>
+                    <input id="SearchState" class="form-control col-sm-6" name="q" value="@Model.SearchState" type="text" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Search" class="btn btn-outline-secondary" />
+                </div>
+            </form>*@
+
+        @*@if (string.IsNullOrWhiteSpace(Model.SearchState))
+            {
+
+            }
+            else if (covid19CasesAndDeaths == null)
+            {
+                <div class="alert alert-info">Covid19 Data for @Model.SearchState not found.</div>
+            }*@
+        @*else
+            {*@
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-body shadow border-0">
+                    <div class="subtitle lead">
+                        CUMULATIVE
+                    </div>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-6">
+                            Date
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.Date.Date.ToShortDateString()
+                        </dd>
+                        <dt class="col-sm-6">
+                            State
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Model.statesDictionary[covid19Vaccines.Location.ToUpper()]
+                        </dd>
+                        <dt class="col-sm-6">
+                            Administered Cumulative
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.AdministeredCumulative
+                        </dd>
+                        <dt class="col-sm-6">
+                            Admin Dose1 Cumulative
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.AdminDose1_Cumulative
+                        </dd>
+                        <dt class="col-sm-6">
+                            Series Complete Cumulative
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.SeriesCompleteCumulative
+                        </dd>
+                        <dt class="col-sm-6">
+                            Booster Cumulative
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.BoosterCumulative
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="card card-body shadow border-0">
+                    <div class="subtitle lead">
+                        DAILY
+                    </div>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-6">
+                            Date
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.Date.Date.ToShortDateString()
+                        </dd>
+                        <dt class="col-sm-6">
+                            State
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Model.statesDictionary[covid19Vaccines.Location.ToUpper()]
+                        </dd>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.AdministeredDaily
+                        </dd>
+                        <dt class="col-sm-6">
+                            Administered Cumulative
+                        </dt>
+                        <dt class="col-sm-6">
+                            Administered Dose 1 Daily
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.AdminDose1_Daily
+                        </dd>
+                        <dt class="col-sm-6">
+                            Series Complete Daily
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.SeriesCompleteDaily
+                        </dd>
+                        <dt class="col-sm-6">
+                            BoosterDaily
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.BoosterDaily
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        @*}*@
+    </div>
+</div>
+
+@*<div class="input-group">
+            <select class="form-control" asp-for="@Model.SearchState" asp-items="ViewBag.SearchState"></select>
+            <div class="input-group-append">
+                <input type="submit" value="Search" class="btn btn-outline-secondary"/>
+            </div>
+    </div>*@
