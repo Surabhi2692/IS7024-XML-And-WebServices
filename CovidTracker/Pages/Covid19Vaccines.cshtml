@@ -8,7 +8,7 @@
     <br />
     <h2>COVID19 Vaccines</h2>
     <div>
-        @*<form method="get" class="row mb-3 ml-1">
+        <form method="get" class="row mb-3 ml-1">
                 <div class="form-group row">
                     <label for="SearchState" class="control-label col-sm-6 font-weight-bold">Enter State</label>
                     <input id="SearchState" class="form-control col-sm-6" name="q" value="@Model.SearchState" type="text" />
@@ -16,18 +16,18 @@
                 <div class="form-group">
                     <input type="submit" value="Search" class="btn btn-outline-secondary" />
                 </div>
-            </form>*@
+            </form>
 
-        @*@if (string.IsNullOrWhiteSpace(Model.SearchState))
+        @if (string.IsNullOrWhiteSpace(Model.SearchState))
             {
 
             }
-            else if (covid19CasesAndDeaths == null)
+            else if (covid19Vaccines == null)
             {
                 <div class="alert alert-info">Covid19 Data for @Model.SearchState not found.</div>
-            }*@
-        @*else
-            {*@
+            }
+        else
+            {
         <div class="row">
             <div class="col-md-6">
                 <div class="card card-body shadow border-0">
@@ -116,7 +116,7 @@
                             @covid19Vaccines.SeriesCompleteDaily
                         </dd>
                         <dt class="col-sm-6">
-                            BoosterDaily
+                            BoosterDailyS
                         </dt>
                         <dd class="col-sm-6">
                             @covid19Vaccines.BoosterDaily
@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-        @*}*@
+        }
     </div>
 </div>
 

@@ -16,7 +16,7 @@ namespace CovidTracker.Pages
         public string SearchState { get; set; }
         public Dictionary<string, string> statesDictionary { get; set; }
 
-        public void OnGet()
+        public void OnGet(string q)
         {
             InitStateDropdown(); 
             using (var webClient = new WebClient())
