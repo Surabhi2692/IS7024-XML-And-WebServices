@@ -10,13 +10,27 @@ namespace CovidTracker.Pages
 {
     public class Covid19CasesAndDeathsModel : PageModel
     {
-        public void OnGet()
+        public string Query;
+        public void OnGet(string query)
         {
+            Query = query;
             using (var webClient = new WebClient()) 
             {
                 string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
                 var covid19CasesAndDeaths = CasesAndDeaths.Covid19CasesAndDeaths.FromJson(jsonString);
-                ViewData["Covid19CasesAndDeaths"] = covid19CasesAndDeaths;;
+
+
+                if(!string.IsNullOrWhiteSpace(query))
+                {
+                    var covidCasesAndDeathList = covid19CasesAndDeaths.ToList();
+                    var stateWiseCasesAndDeaths = covidCasesAndDeathList.FindAll(x => string.Equals(x.State.ToString(), query, StringComparison.OrdinalIgnoreCase));
+                    if (stateWiseCasesAndDeaths != null)
+                    {
+                        var orderedStateWiseCasesAndDeaths = stateWiseCasesAndDeaths.OrderByDescending(x => x.SubmissionDate).ToArray();
+                        ViewData["Covid19CasesAndDeaths"] = orderedStateWiseCasesAndDeaths[0];
+                    }
+
+                }
             }
         }
     }
