@@ -19,7 +19,6 @@ namespace CovidTracker.Pages
         public void OnGet(string query)
         {
             InitStateDropdown();
-            Query = query;
             using (var webClient = new WebClient())
             {
                 string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/rh2h-3yt2.json");
@@ -44,6 +43,7 @@ namespace CovidTracker.Pages
                 {
                     ViewData["Covid19Vaccines"] = null;
                 }
+                SearchState = query;
             }
         }
 
