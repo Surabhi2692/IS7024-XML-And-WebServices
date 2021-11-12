@@ -37,7 +37,7 @@ namespace CovidTracker.Pages
                     }
                     else
                     {
-                        ViewData["Covid19CasesAndDeaths"] = null;
+                        ViewData["Covid19Vaccines"] = null;
                     }
                 }
                 else
