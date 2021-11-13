@@ -11,11 +11,11 @@ namespace CovidTracker.Pages
 {
     public class Covid19VaccinesModel : PageModel
     {
-        public string Query;
         [BindProperty]
         public SelectList StateList { get; set; }
         public string SearchState { get; set; }
         public Dictionary<string, string> statesDictionary { get; set; }
+
         public void OnGet(string query)
         {
             InitStateDropdown();
@@ -28,7 +28,7 @@ namespace CovidTracker.Pages
                 if (!string.IsNullOrWhiteSpace(query))
                 {
                     var covid19VaccineList = covid19Vaccines.ToList();
-                    var stateWiseVaccines = covid19VaccineList.FindAll(x => string.Equals(x.Location, query, StringComparison.OrdinalIgnoreCase)).Where(x => x.DateType.ToString() == "Report").ToList();
+                    var stateWiseVaccines = covid19VaccineList.FindAll(x => string.Equals(x.Location, query, StringComparison.OrdinalIgnoreCase)).Where(x => x.DateType == Vaccines.DateType.Report).ToList();
                     if (stateWiseVaccines != null && stateWiseVaccines.Count > 0)
                     {
                         var orderedStateWiseVaccines = stateWiseVaccines.OrderByDescending(x => x.Date).ToArray();
@@ -103,10 +103,9 @@ namespace CovidTracker.Pages
                 { "WI", "Wisconsin" },
                 { "WY", "Wyoming" }
             };
-        }
 
-       
+            ViewData["SearchState"] = new SelectList(statesDictionary, "Key", "Value");
         }
-
     }
+}
 

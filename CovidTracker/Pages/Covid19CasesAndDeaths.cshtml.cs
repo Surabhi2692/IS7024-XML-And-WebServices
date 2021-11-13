@@ -16,7 +16,7 @@ namespace CovidTracker.Pages
         public string SearchState { get; set; }
         public Dictionary<string, string> statesDictionary { get; set; }
 
-        public void OnGet(string q)
+        public void OnGet(string query)
         {
             InitStateDropdown();
             using (var webClient = new WebClient()) 
@@ -24,10 +24,10 @@ namespace CovidTracker.Pages
                 string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
                 var covid19CasesAndDeaths = CasesAndDeaths.Covid19CasesAndDeaths.FromJson(jsonString);
 
-                if (!string.IsNullOrWhiteSpace(q))
+                if (!string.IsNullOrWhiteSpace(query))
                 {
                     var covidCasesAndDeathList = covid19CasesAndDeaths.ToList();
-                    var stateWiseCasesAndDeaths = covidCasesAndDeathList.FindAll(x => string.Equals(x.State.ToString(), q, StringComparison.OrdinalIgnoreCase));
+                    var stateWiseCasesAndDeaths = covidCasesAndDeathList.FindAll(x => string.Equals(x.State.ToString(), query, StringComparison.OrdinalIgnoreCase));
                     if (stateWiseCasesAndDeaths != null && stateWiseCasesAndDeaths.Count > 0)
                     {
                         var orderedStateWiseCasesAndDeaths = stateWiseCasesAndDeaths.OrderByDescending(x => x.SubmissionDate).ToArray();
@@ -43,7 +43,7 @@ namespace CovidTracker.Pages
                     ViewData["Covid19CasesAndDeaths"] = null;
                 }
 
-                SearchState = q;
+                SearchState = query;
             }
         }
 
@@ -104,7 +104,7 @@ namespace CovidTracker.Pages
                 { "WY", "Wyoming" }
             };
 
-            //ViewData["SearchState"] = new SelectList(statesDictionary, "State", "Name");
+            ViewData["SearchState"] = new SelectList(statesDictionary, "Key", "Value");
         }
     }
 }
