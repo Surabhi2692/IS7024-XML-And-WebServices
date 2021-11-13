@@ -16,7 +16,7 @@
         "state": {
           "$ref": "#/definitions/State"
         },
-        "tot_cases": {
+        "total_cases": {
           "type": "string",
           "format": "integer"
         },
@@ -69,7 +69,7 @@
         "new_death",
         "state",
         "submission_date",
-        "tot_cases",
+        "total_cases",
         "tot_death"
       ],
       "title": "Covid19CasesAndDeath"

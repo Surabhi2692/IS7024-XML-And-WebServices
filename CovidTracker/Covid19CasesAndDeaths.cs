@@ -2,61 +2,60 @@
 {
     using System;
     using System.Collections.Generic;
-
     using System.Globalization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
     public partial class Covid19CasesAndDeaths
-    {
+    {   //SubmissionDate = the date that the state submit their records
         [JsonProperty("submission_date")]
         public DateTimeOffset SubmissionDate { get; set; }
-
+        //state
         [JsonProperty("state")]
         public State State { get; set; }
-
+        //tot_cases --> Total Cases
         [JsonProperty("tot_cases")]
         [JsonConverter(typeof(ParseStringConverter))]
         public long TotCases { get; set; }
-
+        //Confimed cases
         [JsonProperty("conf_cases", NullValueHandling = NullValueHandling.Ignore)]
         public string ConfCases { get; set; }
-
+        //probably cases
         [JsonProperty("prob_cases", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ParseStringConverter))]
         public long? ProbCases { get; set; }
-
+        //new cases
         [JsonProperty("new_case")]
         public string NewCase { get; set; }
-
+        //number of new probable deaths
         [JsonProperty("pnew_case", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ParseStringConverter))]
         public long? PnewCase { get; set; }
-
+        //total death
         [JsonProperty("tot_death")]
         [JsonConverter(typeof(ParseStringConverter))]
         public long TotDeath { get; set; }
-
+        //confirmed death
         [JsonProperty("conf_death", NullValueHandling = NullValueHandling.Ignore)]
         public string ConfDeath { get; set; }
-
+        //probable death
         [JsonProperty("prob_death", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ParseStringConverter))]
         public long? ProbDeath { get; set; }
-
+        //new death
         [JsonProperty("new_death")]
         public string NewDeath { get; set; }
-
+        //probable new death
         [JsonProperty("pnew_death", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ParseStringConverter))]
         public long? PnewDeath { get; set; }
-
+        //date and time record was created
         [JsonProperty("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
-
+        //if agree, then confirmed and probable cases are included, if not agree, then total cases will not be included
         [JsonProperty("consent_cases", NullValueHandling = NullValueHandling.Ignore)]
         public Consent? ConsentCases { get; set; }
-
+        //if agree, then confirmed and death cases are included, if not agree, then total death cases will not be included
         [JsonProperty("consent_deaths", NullValueHandling = NullValueHandling.Ignore)]
         public Consent? ConsentDeaths { get; set; }
     }
