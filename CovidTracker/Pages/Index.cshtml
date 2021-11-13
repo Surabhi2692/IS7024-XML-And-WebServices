@@ -3,63 +3,74 @@
 @{
     ViewData["Title"] = "CovidTracker";
 }
+<html>
+@*Header*@
+<head>
+    <title>Covid tracker</title>
+</head>
 
-<div class="jumbotron-fluid text-light" style="background-image: linear-gradient(rgba(0,0,0,.40), rgba(0,0,0,.40)), url('/img/BannerBackground.jpg'); height: 450px; background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-color: black">
-    <div class="container text-center" style="padding: 8rem 2rem;">
-        <div>
-            <h1 class="display-3">
-                <em>
-                    <strong>
-                        TOGETHER <br />
-                        WE <span style="color: orangered">FIGHT</span>
-                    </strong>
-                </em>
-            </h1>
+@*Html*@
+<body>
+    <div class="jumbotron-fluid text-light" style="background-image: linear-gradient(rgba(0,0,0,.40), rgba(0,0,0,.40)), url('/img/BannerBackground.jpg'); height: 450px; background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-color: black">
+        <div class="container text-center" style="padding: 8rem 2rem;">
+            <div>
+                <h1 class="display-3">
+                    <em>
+                        <strong>
+                            TOGETHER <br />
+                            WE <span>FIGHT</span>
+                        </strong>
+                    </em>
+                </h1>
+            </div>
+            <div>
+                <p class="lead">
+                    Be <span><strong>INFORMED.</strong></span>&nbsp;&nbsp;&nbsp;
+                    Be <span><strong>PREPARED.</strong></span>&nbsp;&nbsp;&nbsp;
+                    Be <span><strong>SMART.</strong></span>&nbsp;&nbsp;&nbsp;
+                    Be <span><strong>SAFE.</strong></span>&nbsp;&nbsp;&nbsp;<br />
+                    Be <span><strong>READY</strong></span> to fight <span><strong>#COVID19</strong></span>
+                </p>
+            </div>
         </div>
-        <div>
-            <p class="lead">
-                Be <span><strong>INFORMED.</strong></span>&nbsp;&nbsp;&nbsp;
-                Be <span><strong>PREPARED.</strong></span>&nbsp;&nbsp;&nbsp;
-                Be <span><strong>SMART.</strong></span>&nbsp;&nbsp;&nbsp;
-                Be <span><strong>SAFE.</strong></span>&nbsp;&nbsp;&nbsp;<br />
-                Be <span><strong>READY</strong></span> to fight <span><strong>#COVID19</strong></span>
+    </div>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h2>Get live data for better decisions in an uncertain time</h2>
+            <p class="lead text-muted">
+                Stay up-to-date with valuable coronavirus (COVID-19) data summarized by confirmed cases and deaths and vaccine administeration. <br />
+                "We are in this together -and we will get through this together."
             </p>
         </div>
-    </div>
-</div>
-<section class="jumbotron text-center">
+    </section>
     <div class="container">
-        <h2>Get live data for better decisions in an uncertain time</h2>
-        <p class="lead text-muted">
-            Stay up-to-date with valuable coronavirus (COVID-19) data summarized by confirmed cases and deaths and vaccine administeration. <br />
-            "We are in this together -and we will get through this together."
-        </p>
-    </div>
-</section>
-<div class="container">
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <div class="card shadow border-0">
-                <img src="/img/WearMasks.png" alt="Wear Masks">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="card shadow border-0">
+                    <img src="/img/WearMasks.png" alt="Wear Masks">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow border-0">
+                    <img src="/img/WashHands.png" alt="Wash Hands">
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card shadow border-0">
-                <img src="/img/WashHands.png" alt="Wash Hands">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow border-0">
+                    <img src="/img/SaferChoices.jpg" style="height: 650px" alt="Safer Choices">
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card shadow border-0">
-                <img src="/img/SaferChoices.jpg" style="height: 650px" alt="Safer Choices">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card shadow border-0">
-                <img src="/img/GetVaccinated.jpg" style="height: 650px" alt="Get Vaccinated">
+            <div class="col-md-6">
+                <div class="card shadow border-0">
+                    <img src="/img/GetVaccinated.jpg" style="height: 650px" alt="Get Vaccinated">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+
+
+</body>
+</html>
