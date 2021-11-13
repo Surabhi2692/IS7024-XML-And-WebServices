@@ -79,8 +79,11 @@ body {
     background-color: black;
 }
 
-span_style {
+.span_style {
     color: orangered;
 }
 
+.container_padding {
+    padding: 8rem 2rem;
+}
 
