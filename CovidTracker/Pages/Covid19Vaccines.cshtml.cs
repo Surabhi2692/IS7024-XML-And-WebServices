@@ -21,8 +21,20 @@ namespace CovidTracker.Pages
             InitStateDropdown();
             using (var webClient = new WebClient())
             {
-                string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/rh2h-3yt2.json");
-                var covid19Vaccines = Vaccines.Covid19Vaccine.FromJson(jsonString);
+                string covid_vaccine = webClient.DownloadString("https://data.cdc.gov/resource/rh2h-3yt2.json");
+
+                string result = "";
+
+                try
+                {
+                    result = webClient.DownloadString(covid_vaccine);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception while calling API", e);
+
+                }
+                var covid19Vaccines = Vaccines.Covid19Vaccine.FromJson(covid_vaccine);
 
 
                 if (!string.IsNullOrWhiteSpace(query))
