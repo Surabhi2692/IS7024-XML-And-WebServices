@@ -21,17 +21,16 @@ namespace CovidTracker.Pages
             InitStateDropdown();
             using (var webClient = new WebClient())
             {
-                string covid_vaccine_data = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-                string value = "";
-               
+                string covid_vaccine_data = string.Empty;
+
 
                 try
                 {
-                    value = webClient.DownloadString(covid_vaccine_data);
+                   covid_vaccine_data = webClient.DownloadString("https://data.cdc.gov/resource/rh2h-3yt2.json");
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Exception while calling API", e);
+                    Console.WriteLine("Exception while calling API - Covid Vaccines", e);
 
                 }
 
