@@ -76,12 +76,9 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: black;
+    background-color: cornflowerblue;
 }
 
-span_style {
-    color: orangered;
-}
 
 .head_page {
     background-image: linear-gradient(rgba(0,0,0,.40), rgba(0,0,0,.40)), url('/img/BannerBackground.jpg');
