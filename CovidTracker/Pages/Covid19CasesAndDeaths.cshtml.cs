@@ -21,8 +21,20 @@ namespace CovidTracker.Pages
             InitStateDropdown();
             using (var webClient = new WebClient()) 
             {
-                string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-                var covid19CasesAndDeaths = CasesAndDeaths.Covid19CasesAndDeaths.FromJson(jsonString);
+
+                string Covid_CaseRelated_Data = string.Empty;
+
+                try
+                {
+                    Covid_CaseRelated_Data = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception while calling API - Covid Vaccines", e);
+
+                }
+
+                var covid19CasesAndDeaths = CasesAndDeaths.Covid19CasesAndDeaths.FromJson(Covid_CaseRelated_Data);
 
                 if (!string.IsNullOrWhiteSpace(query))
                 {
