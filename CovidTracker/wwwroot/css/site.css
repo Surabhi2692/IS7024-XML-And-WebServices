@@ -76,3 +76,15 @@ span {
 h2 {
     color: teal
 }
+.jumbotron-fluid .text-light {
+    background-image: linear-gradient(rgba(0,0,0,.40), rgba(0,0,0,.40));
+    background-image: url(BannerBackground.jpg);
+    height: 450px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black
+}
+.container .text-center {
+    padding: 8rem 2rem
+}
