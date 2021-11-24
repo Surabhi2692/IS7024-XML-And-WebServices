@@ -38,13 +38,6 @@
           "type": "string",
           "format": "integer"
         },
-        "conf_death": {
-          "type": "string"
-        },
-        "prob_death": {
-          "type": "string",
-          "format": "integer"
-        },
         "new_death": {
           "type": "string"
         },
@@ -61,6 +54,13 @@
         },
         "consent_deaths": {
           "$ref": "#/definitions/Consent"
+        },
+        "conf_death": {
+          "type": "string"
+        },
+        "prob_death": {
+          "type": "string",
+          "format": "integer"
         }
       },
       "required": [
@@ -86,29 +86,64 @@
     "State": {
       "type": "string",
       "enum": [
-        "CA",
-        "NE",
-        "ME",
-        "MS",
-        "NH",
-        "NV",
         "AL",
-        "GU",
+        "AK",
+        "AR",
+        "AS",
+        "AZ",
+        "CA",
+        "CO",
         "CT",
-        "WI",
-        "ND",
-        "IN",
-        "MO",
-        "MD",
-        "ID",
         "DE",
+        "DC",
+        "FL",
+        "GA",
+        "GU",
+        "HI",
+        "IA",
+        "ID",
         "IL",
+        "IN",
+        "KS",
+        "KY",
+        "LA",
+        "MA",
+        "MD",
+        "ME",
         "MI",
-        "WA",
-        "VT",
-        "NC",
+        "MN",
+        "MO",
+        "MP",
+        "MS",
         "MT",
-        "VI"
+        "NC",
+        "ND",
+        "NE",
+        "NH",
+        "NJ",
+        "NM",
+        "NV",
+        "NY",
+        "NYC",
+        "OH",
+        "OK",
+        "OR",
+        "PA",
+        "PR",
+        "PW",
+        "RI",
+        "SC",
+        "SD",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VI",
+        "VT",
+        "WA",
+        "WI",
+        "WV",
+        "WY"
       ],
       "title": "State"
     }
