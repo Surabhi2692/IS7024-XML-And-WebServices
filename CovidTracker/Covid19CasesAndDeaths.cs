@@ -63,7 +63,7 @@
 
     public enum Consent { Agree, NA, NotAgree };
 
-    public enum State { AL, AK, AR, AS, AZ, CA, CO, CT, DE, DC, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, NYC, OH, OK, OR, PA, PR, PW, RI, SC, SD, TN, TX, UT, VA, VI, VT, WA, WI, WV, WY };
+    public enum State { AL, AK, AR, AS, AZ, CA, CO, CT, DC, DE, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, NYC, OH, OK, OR, PA, PR, PW, RI, SC, SD, TN, TX, UT, VA, VI, VT, WA, WI, WV, WY };
 
     public partial class Covid19CasesAndDeaths
     {
@@ -217,10 +217,14 @@
                     return State.KS;
                 case "KY":
                     return State.KY;
+                case "LA":
+                    return State.LA;
                 case "MA":
                     return State.MA;
                 case "MD":
                     return State.MD;
+                case "ME":
+                    return State.ME;
                 case "MI":
                     return State.MI;
                 case "MN":
@@ -363,11 +367,17 @@
                 case State.KY:
                     serializer.Serialize(writer, "KY");
                     return;
+                case State.LA:
+                    serializer.Serialize(writer, "LA");
+                    return;
                 case State.MA:
                     serializer.Serialize(writer, "MA");
                     return;
                 case State.MD:
                     serializer.Serialize(writer, "MD");
+                    return;
+                case State.ME:
+                    serializer.Serialize(writer, "ME");
                     return;
                 case State.MI:
                     serializer.Serialize(writer, "MI");
