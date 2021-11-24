@@ -21,29 +21,37 @@ namespace CovidTracker.Pages
             InitStateDropdown();
             using (var webClient = new WebClient())
             {
-                string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/rh2h-3yt2.json");
-                var covid19Vaccines = Vaccines.Covid19Vaccine.FromJson(jsonString);
+                string covid19Data = string.Empty;
 
-
-                if (!string.IsNullOrWhiteSpace(query))
+                try 
                 {
-                    var covid19VaccineList = covid19Vaccines.ToList();
-                    var stateWiseVaccines = covid19VaccineList.FindAll(x => string.Equals(x.Location, query, StringComparison.OrdinalIgnoreCase)).Where(x => x.DateType == Vaccines.DateType.Report).ToList();
-                    if (stateWiseVaccines != null && stateWiseVaccines.Count > 0)
+                    covid19Data = webClient.DownloadString("https://data.cdc.gov/resource/rh2h-3yt2.json");
+                    var covid19Vaccines = Vaccines.Covid19Vaccine.FromJson(covid19Data);
+
+                    if (!string.IsNullOrWhiteSpace(query))
                     {
-                        var orderedStateWiseVaccines = stateWiseVaccines.OrderByDescending(x => x.Date).ToArray();
-                        ViewData["Covid19Vaccines"] = orderedStateWiseVaccines[0];
+                        var covid19VaccineList = covid19Vaccines.ToList();
+                        var stateWiseVaccines = covid19VaccineList.FindAll(x => string.Equals(x.Location, query, StringComparison.OrdinalIgnoreCase)).Where(x => x.DateType == Vaccines.DateType.Report).ToList();
+                        if (stateWiseVaccines != null && stateWiseVaccines.Count > 0)
+                        {
+                            var orderedStateWiseVaccines = stateWiseVaccines.OrderByDescending(x => x.Date).ToArray();
+                            ViewData["Covid19Vaccines"] = orderedStateWiseVaccines[0];
+                        }
+                        else
+                        {
+                            ViewData["Covid19Vaccines"] = null;
+                        }
                     }
                     else
                     {
                         ViewData["Covid19Vaccines"] = null;
                     }
+                    SearchState = query;
                 }
-                else
+                catch (Exception ex)
                 {
-                    ViewData["Covid19Vaccines"] = null;
+                    throw new Exception("Exception while calling API", ex);
                 }
-                SearchState = query;
             }
         }
 
@@ -90,6 +98,7 @@ namespace CovidTracker.Pages
                 { "OK", "Oklahoma" },
                 { "OR", "Oregon" },
                 { "PA", "Pennsylvania" },
+                { "PR", "Puerto Rico" },
                 { "RI", "Rhode Island" },
                 { "SC", "South Carolina" },
                 { "SD", "South Dakota" },

@@ -20,28 +20,6 @@ namespace CovidTracker.Pages
 
         public void OnGet()
         {
-            using (var webClient = new WebClient())
-            {
-                string covid_data = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-                string result = "";
-
-                try
-                {
-                    result = webClient.DownloadString(covid_data);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Exception while calling API", e);
-
-                }
-                string jsonStringVaccineData = webClient.DownloadString("https://data.cdc.gov/resource/rh2h-3yt2.json");
-                var covid19CasesAndDeaths = CasesAndDeaths.Covid19CasesAndDeaths.FromJson(covid_data);
-                var covid19Vaccine = Vaccines.Covid19Vaccine.FromJson(jsonStringVaccineData);
-                ViewData["Covid19CasesAndDeaths"] = covid19CasesAndDeaths;
-                ViewData["Covid19Vaccines"] = covid19Vaccine;
-
-            
-            }
          
         }
     }
