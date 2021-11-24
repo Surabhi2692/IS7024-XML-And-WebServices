@@ -63,7 +63,7 @@
 
     public enum Consent { Agree, NA, NotAgree };
 
-    public enum State { AL, CA, CT, DE, GU, ID, IL, IN, MD, ME, MI, MO, MS, MT, NC, ND, NE, NH, NV, VI, VT, WA, WI };
+    public enum State { AL, AK, AR, AS, AZ, CA, CO, CT, DE, DC, FL, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, NYC, OH, OK, OR, PA, PR, PW, RI, SC, SD, TN, TX, UT, VA, VI, VT, WA, WI, WV, WY };
 
     public partial class Covid19CasesAndDeaths
     {
@@ -179,28 +179,56 @@
             {
                 case "AL":
                     return State.AL;
+                case "AK":
+                    return State.AK;
+                case "AR":
+                    return State.AR;
+                case "AS":
+                    return State.AS;
+                case "AZ":
+                    return State.AZ;
                 case "CA":
                     return State.CA;
+                case "CO":
+                    return State.CO;
                 case "CT":
                     return State.CT;
+                case "DC":
+                    return State.DC;
                 case "DE":
                     return State.DE;
+                case "FL":
+                    return State.FL;
+                case "GA":
+                    return State.GA;
                 case "GU":
                     return State.GU;
+                case "HI":
+                    return State.HI;
+                case "IA":
+                    return State.IA;
                 case "ID":
                     return State.ID;
                 case "IL":
                     return State.IL;
                 case "IN":
                     return State.IN;
+                case "KS":
+                    return State.KS;
+                case "KY":
+                    return State.KY;
+                case "MA":
+                    return State.MA;
                 case "MD":
                     return State.MD;
-                case "ME":
-                    return State.ME;
                 case "MI":
                     return State.MI;
+                case "MN":
+                    return State.MN;
                 case "MO":
                     return State.MO;
+                case "MP":
+                    return State.MP;
                 case "MS":
                     return State.MS;
                 case "MT":
@@ -213,8 +241,42 @@
                     return State.NE;
                 case "NH":
                     return State.NH;
+                case "NJ":
+                    return State.NJ;
+                case "NM":
+                    return State.NM;
                 case "NV":
                     return State.NV;
+                case "NY":
+                    return State.NY;
+                case "NYC":
+                    return State.NYC;
+                case "OH":
+                    return State.OH;
+                case "OK":
+                    return State.OK;
+                case "OR":
+                    return State.OR;
+                case "PA":
+                    return State.PA;
+                case "PR":
+                    return State.PR;
+                case "PW":
+                    return State.PW;
+                case "RI":
+                    return State.RI;
+                case "SC":
+                    return State.SC;
+                case "SD":
+                    return State.SD;
+                case "TN":
+                    return State.TN;
+                case "TX":
+                    return State.TX;
+                case "UT":
+                    return State.UT;
+                case "VA":
+                    return State.VA;
                 case "VI":
                     return State.VI;
                 case "VT":
@@ -223,6 +285,10 @@
                     return State.WA;
                 case "WI":
                     return State.WI;
+                case "WV":
+                    return State.WV;
+                case "WY":
+                    return State.WY;
             }
             throw new Exception("Cannot unmarshal type State");
         }
@@ -240,17 +306,47 @@
                 case State.AL:
                     serializer.Serialize(writer, "AL");
                     return;
+                case State.AK:
+                    serializer.Serialize(writer, "AK");
+                    return;
+                case State.AR:
+                    serializer.Serialize(writer, "AR");
+                    return;
+                case State.AS:
+                    serializer.Serialize(writer, "AS");
+                    return;
+                case State.AZ:
+                    serializer.Serialize(writer, "AZ");
+                    return;
                 case State.CA:
                     serializer.Serialize(writer, "CA");
+                    return;
+                case State.CO:
+                    serializer.Serialize(writer, "CO");
                     return;
                 case State.CT:
                     serializer.Serialize(writer, "CT");
                     return;
+                case State.DC:
+                    serializer.Serialize(writer, "DC");
+                    return;
                 case State.DE:
                     serializer.Serialize(writer, "DE");
                     return;
+                case State.FL:
+                    serializer.Serialize(writer, "FL");
+                    return;
+                case State.GA:
+                    serializer.Serialize(writer, "GA");
+                    return;
                 case State.GU:
                     serializer.Serialize(writer, "GU");
+                    return;
+                case State.HI:
+                    serializer.Serialize(writer, "HI");
+                    return;
+                case State.IA:
+                    serializer.Serialize(writer, "IA");
                     return;
                 case State.ID:
                     serializer.Serialize(writer, "ID");
@@ -261,17 +357,29 @@
                 case State.IN:
                     serializer.Serialize(writer, "IN");
                     return;
+                case State.KS:
+                    serializer.Serialize(writer, "KS");
+                    return;
+                case State.KY:
+                    serializer.Serialize(writer, "KY");
+                    return;
+                case State.MA:
+                    serializer.Serialize(writer, "MA");
+                    return;
                 case State.MD:
                     serializer.Serialize(writer, "MD");
-                    return;
-                case State.ME:
-                    serializer.Serialize(writer, "ME");
                     return;
                 case State.MI:
                     serializer.Serialize(writer, "MI");
                     return;
+                case State.MN:
+                    serializer.Serialize(writer, "MN");
+                    return;
                 case State.MO:
                     serializer.Serialize(writer, "MO");
+                    return;
+                case State.MP:
+                    serializer.Serialize(writer, "MP");
                     return;
                 case State.MS:
                     serializer.Serialize(writer, "MS");
@@ -291,8 +399,59 @@
                 case State.NH:
                     serializer.Serialize(writer, "NH");
                     return;
+                case State.NJ:
+                    serializer.Serialize(writer, "NJ");
+                    return;
+                case State.NM:
+                    serializer.Serialize(writer, "NM");
+                    return;
                 case State.NV:
                     serializer.Serialize(writer, "NV");
+                    return;
+                case State.NY:
+                    serializer.Serialize(writer, "NY");
+                    return;
+                case State.NYC:
+                    serializer.Serialize(writer, "NYC");
+                    return;
+                case State.OH:
+                    serializer.Serialize(writer, "OH");
+                    return;
+                case State.OK:
+                    serializer.Serialize(writer, "OK");
+                    return;
+                case State.OR:
+                    serializer.Serialize(writer, "OR");
+                    return;
+                case State.PA:
+                    serializer.Serialize(writer, "PA");
+                    return;
+                case State.PR:
+                    serializer.Serialize(writer, "PR");
+                    return;
+                case State.PW:
+                    serializer.Serialize(writer, "PW");
+                    return;
+                case State.RI:
+                    serializer.Serialize(writer, "RI");
+                    return;
+                case State.SC:
+                    serializer.Serialize(writer, "SC");
+                    return;
+                case State.SD:
+                    serializer.Serialize(writer, "SD");
+                    return;
+                case State.TN:
+                    serializer.Serialize(writer, "TN");
+                    return;
+                case State.TX:
+                    serializer.Serialize(writer, "TX");
+                    return;
+                case State.UT:
+                    serializer.Serialize(writer, "UT");
+                    return;
+                case State.VA:
+                    serializer.Serialize(writer, "VA");
                     return;
                 case State.VI:
                     serializer.Serialize(writer, "VI");
@@ -305,6 +464,12 @@
                     return;
                 case State.WI:
                     serializer.Serialize(writer, "WI");
+                    return;
+                case State.WV:
+                    serializer.Serialize(writer, "WV");
+                    return;
+                case State.WY:
+                    serializer.Serialize(writer, "WY");
                     return;
             }
             throw new Exception("Cannot marshal type State");
