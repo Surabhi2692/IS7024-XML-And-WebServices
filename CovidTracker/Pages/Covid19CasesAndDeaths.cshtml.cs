@@ -21,29 +21,37 @@ namespace CovidTracker.Pages
             InitStateDropdown();
             using (var webClient = new WebClient()) 
             {
-                string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-                var covid19CasesAndDeaths = CasesAndDeaths.Covid19CasesAndDeaths.FromJson(jsonString);
+                string covid19Data = string.Empty;
 
-                if (!string.IsNullOrWhiteSpace(query))
+                try
                 {
-                    var covidCasesAndDeathList = covid19CasesAndDeaths.ToList();
-                    var stateWiseCasesAndDeaths = covidCasesAndDeathList.FindAll(x => string.Equals(x.State.ToString(), query, StringComparison.OrdinalIgnoreCase));
-                    if (stateWiseCasesAndDeaths != null && stateWiseCasesAndDeaths.Count > 0)
+                    covid19Data = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
+                    var covid19CasesAndDeaths = CasesAndDeaths.Covid19CasesAndDeaths.FromJson(covid19Data);
+
+                    if (!string.IsNullOrWhiteSpace(query))
                     {
-                        var orderedStateWiseCasesAndDeaths = stateWiseCasesAndDeaths.OrderByDescending(x => x.SubmissionDate).ToArray();
-                        ViewData["Covid19CasesAndDeaths"] = orderedStateWiseCasesAndDeaths[0];
+                        var covidCasesAndDeathList = covid19CasesAndDeaths.ToList();
+                        var stateWiseCasesAndDeaths = covidCasesAndDeathList.FindAll(x => string.Equals(x.State.ToString(), query, StringComparison.OrdinalIgnoreCase));
+                        if (stateWiseCasesAndDeaths != null && stateWiseCasesAndDeaths.Count > 0)
+                        {
+                            var orderedStateWiseCasesAndDeaths = stateWiseCasesAndDeaths.OrderByDescending(x => x.SubmissionDate).ToArray();
+                            ViewData["Covid19CasesAndDeaths"] = orderedStateWiseCasesAndDeaths[0];
+                        }
+                        else
+                        {
+                            ViewData["Covid19CasesAndDeaths"] = null;
+                        }
                     }
-                    else 
+                    else
                     {
                         ViewData["Covid19CasesAndDeaths"] = null;
                     }
+                    SearchState = query;
                 }
-                else
+                catch (Exception ex)
                 {
-                    ViewData["Covid19CasesAndDeaths"] = null;
+                    throw new Exception("Exception while calling API", ex);
                 }
-
-                SearchState = query;
             }
         }
 
@@ -90,6 +98,7 @@ namespace CovidTracker.Pages
                 { "OK", "Oklahoma" },
                 { "OR", "Oregon" },
                 { "PA", "Pennsylvania" },
+                { "PR", "Puerto Rico" },
                 { "RI", "Rhode Island" },
                 { "SC", "South Carolina" },
                 { "SD", "South Dakota" },
