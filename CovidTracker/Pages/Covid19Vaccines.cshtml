@@ -1,5 +1,5 @@
 ﻿@page
-@model CovidTracker.Pages.Covid19VaccinesModel 
+@model CovidTracker.Pages.Covid19VaccinesModel
 @{
     CovidTracker.Vaccines.Covid19Vaccine covid19Vaccines = (CovidTracker.Vaccines.Covid19Vaccine)ViewData["Covid19Vaccines"];
 }
@@ -28,7 +28,7 @@
         }
         else
         {
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="card card-body shadow border-0" style="background-color: aliceblue">
                         <div class="subtitle lead">
@@ -123,6 +123,96 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="covid19DosesChart" style="height: 750px"></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="covid19SeriesChart" style="height: 750px"></div>
+                </div>
+            </div>
         }
     </div>
 </div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var dosesData = google.visualization.arrayToDataTable([
+            ['Date', 'Doses'],
+
+            @foreach (var covid19Vaccine in Model.Covid19VaccinesList)
+            {
+                <text>['@covid19Vaccine.SubmittedDate.Date.ToShortDateString()', @covid19Vaccine.DailyDoses],</text>
+            }
+        ]);
+
+        var dosesOptions = {
+            title: 'Doses Administered Trend by Week',
+            curveType: 'function',
+            pointsVisible: true,
+            lineWidth: 3,
+            legend: 'none',
+            hAxis: {
+                title: 'Date',
+                titleTextStyle: {
+                    bold: true
+                }
+            },
+            vAxis: {
+                title: 'Doses',
+                titleTextStyle: {
+                    bold: true
+                },
+                viewWindow: {
+                    min: 0,
+                    max: 100000
+                }
+            }
+        };
+
+        var dosesChart = new google.visualization.ColumnChart(document.getElementById('covid19DosesChart'));
+        dosesChart.draw(dosesData, dosesOptions);
+
+        var seriesData = google.visualization.arrayToDataTable([
+            ['Date', 'Series'],
+
+            @foreach (var covid19Vaccine in Model.Covid19VaccinesList)
+            {
+                <text>['@covid19Vaccine.SubmittedDate.Date.ToShortDateString()', @covid19Vaccine.SeriesComplete],</text>
+            }
+        ]);
+
+        var seriesOptions = {
+            title: 'Series Complete Trend by Week',
+            curveType: 'function',
+            pointsVisible: true,
+            lineWidth: 3,
+            legend: 'none',
+            hAxis: {
+                title: 'Date',
+                titleTextStyle: {
+                    bold: true
+                }
+            },
+            vAxis: {
+                title: 'Series Complete',
+                titleTextStyle: {
+                    bold: true
+                },
+                viewWindow: {
+                    min: 0,
+                    max: 10000
+                }
+            }
+        };
+
+        var seriesChart = new google.visualization.ColumnChart(document.getElementById('covid19SeriesChart'));
+        seriesChart.draw(seriesData, seriesOptions);
+    }
+</script>

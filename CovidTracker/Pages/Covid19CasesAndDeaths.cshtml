@@ -28,7 +28,7 @@
         }
         else
         {
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <div class="card card-body shadow border-0" style="background-color: aliceblue">
                         <div class="subtitle lead">
@@ -164,7 +164,94 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="covid19CasesChart" style="height: 750px"></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="covid19DeathsChart" style="height: 750px"></div>
+                </div>
+            </div>
         }
     </div>
 </div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var casesData = google.visualization.arrayToDataTable([
+            ['Date', 'Cases'],
+
+            @foreach (var covid19CaseAndDeath in Model.Covid19CasesAndDeathsList)
+            {
+                <text>['@covid19CaseAndDeath.SubmittedDate.Date.ToShortDateString()', @covid19CaseAndDeath.NewCases],</text>
+            }
+        ]);
+
+        var casesOptions = {
+            title: 'New Cases Trend by Day',
+            legend: 'none',
+            hAxis: {
+                title: 'Date',
+                titleTextStyle: {
+                    bold: true
+                }
+            },
+            vAxis: {
+                title: 'Cases',
+                titleTextStyle: {
+                    bold: true
+                },
+                viewWindow: {
+                    min: 0,
+                    max: 30000
+                }
+            }
+        };
+
+        var casesChart = new google.visualization.ColumnChart(document.getElementById('covid19CasesChart'));
+        casesChart.draw(casesData, casesOptions);
+
+        var deathsData = google.visualization.arrayToDataTable([
+            ['Date', 'Deaths'],
+
+            @foreach (var covid19CaseAndDeath in Model.Covid19CasesAndDeathsList)
+            {
+                <text>['@covid19CaseAndDeath.SubmittedDate.Date.ToShortDateString()', @covid19CaseAndDeath.NewDeaths],</text>
+            }
+        ]);
+
+        var deathsOptions = {
+            title: 'New Deaths Trend by Day',
+            curveType: 'function',
+            pointsVisible: true,
+            lineWidth: 3,
+            legend: 'none',
+            hAxis: {
+                title: 'Date',
+                titleTextStyle: {
+                    bold: true
+                }
+            },
+            vAxis: {
+                title: 'Deaths',
+                titleTextStyle: {
+                    bold: true
+                },
+                viewWindow: {
+                    min: 0,
+                    max: 500
+                }
+            }
+        };
+
+        var deathsChart = new google.visualization.ColumnChart(document.getElementById('covid19DeathsChart'));
+        deathsChart.draw(deathsData, deathsOptions);
+    }
+</script>
 
