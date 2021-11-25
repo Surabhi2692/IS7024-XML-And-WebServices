@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using CovidTracker.CasesAndDeaths;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,11 +14,13 @@ namespace CovidTracker.Pages
     {
         [BindProperty]
         public SelectList StateList { get; set; }
+        public List<Covid19CasesAndDeathsChartModel> Covid19CasesAndDeathsList { get; set; }
         public string SearchState { get; set; }
         public Dictionary<string, string> statesDictionary { get; set; }
 
         public void OnGet(string query)
         {
+            Covid19CasesAndDeathsList = new List<Covid19CasesAndDeathsChartModel>();
             InitStateDropdown();
             using (var webClient = new WebClient()) 
             {
@@ -26,7 +29,7 @@ namespace CovidTracker.Pages
                 try
                 {
                     covid19Data = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-                    var covid19CasesAndDeaths = CasesAndDeaths.Covid19CasesAndDeaths.FromJson(covid19Data);
+                    var covid19CasesAndDeaths = Covid19CasesAndDeaths.FromJson(covid19Data);
 
                     if (!string.IsNullOrWhiteSpace(query))
                     {
@@ -34,6 +37,7 @@ namespace CovidTracker.Pages
                         var stateWiseCasesAndDeaths = covidCasesAndDeathList.FindAll(x => string.Equals(x.State.ToString(), query, StringComparison.OrdinalIgnoreCase));
                         if (stateWiseCasesAndDeaths != null && stateWiseCasesAndDeaths.Count > 0)
                         {
+                            InitCovid19CasesAndDeathsChartList(stateWiseCasesAndDeaths.OrderBy(x => x.SubmissionDate).ToList());
                             var orderedStateWiseCasesAndDeaths = stateWiseCasesAndDeaths.OrderByDescending(x => x.SubmissionDate).ToArray();
                             ViewData["Covid19CasesAndDeaths"] = orderedStateWiseCasesAndDeaths[0];
                         }
@@ -51,6 +55,29 @@ namespace CovidTracker.Pages
                 catch (Exception ex)
                 {
                     throw new Exception("Exception while calling API", ex);
+                }
+            }
+        }
+
+        public class Covid19CasesAndDeathsChartModel
+        { 
+            public double NewCases { get; set; }
+            public double NewDeaths { get; set; }
+            public DateTime SubmittedDate { get; set; }
+        }
+
+        private void InitCovid19CasesAndDeathsChartList(List<Covid19CasesAndDeaths> stateWiseCasesAndDeaths)
+        {
+            Covid19CasesAndDeathsList = new List<Covid19CasesAndDeathsChartModel>();
+            foreach (var covid19CaseAndDeath in stateWiseCasesAndDeaths)
+            {
+                if (!string.IsNullOrWhiteSpace(covid19CaseAndDeath.NewCase))
+                {
+                    var covid19CasesAndDeathsChartData = new Covid19CasesAndDeathsChartModel();
+                    covid19CasesAndDeathsChartData.NewCases = Convert.ToDouble(covid19CaseAndDeath.NewCase);
+                    covid19CasesAndDeathsChartData.NewDeaths = Convert.ToDouble(covid19CaseAndDeath.NewDeath);
+                    covid19CasesAndDeathsChartData.SubmittedDate = covid19CaseAndDeath.SubmissionDate.DateTime;
+                    Covid19CasesAndDeathsList.Add(covid19CasesAndDeathsChartData);
                 }
             }
         }
