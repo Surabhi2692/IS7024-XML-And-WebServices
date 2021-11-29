@@ -4,83 +4,73 @@
      List <CovidTracker.Item>  moviesRecommendations = (List <CovidTracker.Item>)ViewData["MoviesRecommendations"];
 
 }
+<section class="jumbotron text-center">
+    <div class="container pt-5">
+        <h2 style="color: teal">Happiness can be found even in the darkest of times</h2>
+        <p class="lead text-muted">
+            If one only knows how to search for a good movie. <br />
+            "We are in this together -and we will get through this together."
+        </p>
+    </div>
+</section>
 <div class="container">
-    <br />
-    <h2>Movies Recommendations</h2>
     <div>
-        <form method="get" class="row mb-3 ml-1">
-            <div class="form-group row">
-                <label for="SearchTerm" class="control-label col-sm-6 font-weight-bold">Enter Movie Title</label>
-                <input id="SearchTerm" class="form-control col-sm-4" name="query" value="@Model.SearchTerm" type="text" a />
+        <form method="get" class="mb-3">
+            <div class="input-group row justify-content-center">
+                <label for="SearchTerm" class="control-label col-md-2 font-weight-bold">Enter Movie Title</label>
+                <input id="SearchTerm" class="form-control" name="query" value="@Model.SearchTerm" type="text"/>
+                <input type="submit" value="Search" class="btn btn-outline-secondary input-group-append" />
             </div>
-            <div class="form-group">
-                <input type="submit" value="Search" class="btn btn-outline-secondary" />
-            </div>
-
         </form>
     </div>
 
     @if (moviesRecommendations == null)
     {
-        <div class="alert alert-info">Movies with title not found. </div>
+        <div class="alert alert-info">Movies with title "@Model.SearchTerm" not found. </div>
     }
     else
     {
-
-        @foreach (var movie in moviesRecommendations)
-        {
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="card card-body shadow border-0 card-background">
-                        <hr />
-                        <dl class="row">
-                            <dt class="col-sm-6">
-                                Title
-                            </dt>
-                            <dd class="col-sm-6">
-                                @movie.Title
-                            </dd>
-                            <dt class="col-sm-6">
-                                Poster
-                            </dt>
-                            <dd class="col-sm-6">
-                                <img src="@movie.Image" />
-
-                            </dd>
-                            <dt class="col-sm-6">
-                                Year Released
-                            </dt>
-                            <dd class="col-sm-6">
-                                @movie.Year
-                            </dd>
-                            <dt class="col-sm-6">
-                                Crew
-                            </dt>
-                            <dd class="col-sm-6">
-                                @movie.Crew
-                            </dd>
-                            <dt class="col-sm-6">
-                                Rating
-                            </dt>
-                            <dd class="col-sm-6">
-                                @movie.ImDbRating
-                            </dd>
-                            <dt class="col-sm-6">
-                                Rank
-                            </dt>
-                            <dd class="col-sm-6">
-                                @movie.Rank
-                            </dd>
-
-                        </dl>
+        <div class="row mb-3">
+            @foreach (var movie in moviesRecommendations)
+            {
+                <div class="col-md-6 mb-3">
+                    <div class="card shadow border-0 card-style card-background">
+                        <div class="card-header">@movie.Title</div>            
+                        <div class="row">
+                            <img class="col-md-4" src="@movie.Image" alt="@movie.Title" />
+                            <div class="col-md-8">
+                                <dl class="row pt-4">
+                                    <dt class="col-md-5">
+                                        Year Released
+                                    </dt>
+                                    <dd class="col-md-7">
+                                        @movie.Year
+                                    </dd>
+                                    <dt class="col-sm-5">
+                                        Crew
+                                    </dt>
+                                    <dd class="col-sm-7">
+                                        @movie.Crew
+                                    </dd>
+                                    <dt class="col-sm-5">
+                                        Rating
+                                    </dt>
+                                    <dd class="col-sm-7">
+                                        @movie.ImDbRating
+                                        <img src="/img/Rating.png" alt="Rating" class="icon">
+                                    </dd>
+                                    <dt class="col-sm-5">
+                                        Rank
+                                    </dt>
+                                    <dd class="col-sm-7">
+                                        @movie.Rank
+                                    </dd>
+                                </dl>
+                            </div>  
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-
-
+            }
+        </div>
     }
-
-
 </div>
