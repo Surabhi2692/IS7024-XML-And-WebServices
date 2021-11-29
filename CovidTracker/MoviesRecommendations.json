@@ -1,202 +1,81 @@
- {
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "type": "array",
-    "items": {
-      "$ref": "#/definitions/MoviesRecommendation"
-    },
-    "definitions": {
-      "MoviesRecommendation": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "adult": {
-            "$ref": "#/definitions/Adult"
-          },
-          "belongs_to_collection": {
-            "type": "string"
-          },
-          "budget": {
-            "type": "integer"
-          },
-          "genres": {
-            "$ref": "#/definitions/Genres"
-          },
-          "homepage": {
-            "$ref": "#/definitions/HomepageUnion"
-          },
-          "id": {
-            "$ref": "#/definitions/ID"
-          },
-          "imdb_id": {
-            "type": "string"
-          },
-          "original_language": {
-            "$ref": "#/definitions/OriginalLanguage"
-          },
-          "original_title": {
-            "type": "string"
-          },
-          "overview": {
-            "type": "string"
-          },
-          "popularity": {
-            "$ref": "#/definitions/Popularity"
-          },
-          "poster_path": {
-            "type": "string"
-          },
-          "production_companies": {
-            "$ref": "#/definitions/Genres"
-          },
-          "production_countries": {
-            "$ref": "#/definitions/Genres"
-          },
-          "release_date": {
-            "type": "string"
-          },
-          "revenue": {
-            "$ref": "#/definitions/ID"
-          },
-          "runtime": {
-            "$ref": "#/definitions/ID"
-          },
-          "spoken_languages": {
-            "$ref": "#/definitions/Genres"
-          },
-          "status": {
-            "$ref": "#/definitions/Status"
-          },
-          "tagline": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "video": {
-            "$ref": "#/definitions/Adult"
-          },
-          "vote_average": {
-            "$ref": "#/definitions/Popularity"
-          },
-          "vote_count": {
-            "$ref": "#/definitions/ID"
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/MoviesRecommendations",
+  "definitions": {
+    "MoviesRecommendations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
           }
         },
-        "required": [
-          "adult",
-          "belongs_to_collection",
-          "budget",
-          "genres",
-          "homepage",
-          "id",
-          "imdb_id",
-          "original_language",
-          "original_title",
-          "overview",
-          "popularity",
-          "poster_path",
-          "production_companies",
-          "production_countries",
-          "release_date",
-          "revenue",
-          "runtime",
-          "spoken_languages",
-          "status",
-          "tagline",
-          "title",
-          "video",
-          "vote_average",
-          "vote_count"
-        ],
-        "title": "MoviesRecommendation"
+        "errorMessage": {
+          "type": "string"
+        }
       },
-      "Genres": {
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {}
-          },
-          {
-            "type": "string"
-          }
-        ],
-        "title": "Genres"
+      "required": [
+        "errorMessage",
+        "items"
+      ],
+      "title": "MoviesRecommendations"
+    },
+    "Item": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "rank": {
+          "type": "string",
+          "format": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "fullTitle": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string",
+          "format": "integer"
+        },
+        "image": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".jpg"
+          ]
+        },
+        "crew": {
+          "type": "string"
+        },
+        "imDbRating": {
+          "type": "string"
+        },
+        "imDbRatingCount": {
+          "type": "string",
+          "format": "integer"
+        }
       },
-      "HomepageUnion": {
-        "anyOf": [
-          {
-            "$ref": "#/definitions/HomepageEnum"
-          },
-          {
-            "type": "string",
-            "format": "uri"
-          }
-        ],
-        "title": "HomepageUnion"
-      },
-      "ID": {
-        "anyOf": [
-          {
-            "type": "integer"
-          },
-          {
-            "type": "string"
-          }
-        ],
-        "title": "ID"
-      },
-      "Popularity": {
-        "anyOf": [
-          {
-            "type": "number"
-          },
-          {
-            "type": "string"
-          }
-        ],
-        "title": "Popularity"
-      },
-      "Adult": {
-        "type": "string",
-        "enum": [
-          "False",
-          ""
-        ],
-        "title": "Adult"
-      },
-      "HomepageEnum": {
-        "type": "string",
-        "enum": [
-          "",
-          "'name': 'Drama'}"
-        ],
-        "title": "HomepageEnum"
-      },
-      "OriginalLanguage": {
-        "type": "string",
-        "enum": [
-          "en",
-          "fr",
-          "zh",
-          "it",
-          "fa",
-          "nl",
-          "de",
-          "cn",
-          "ar",
-          "es",
-          ""
-        ],
-        "title": "OriginalLanguage"
-      },
-      "Status": {
-        "type": "string",
-        "enum": [
-          "Released",
-          ""
-        ],
-        "title": "Status"
-      }
+      "required": [
+        "crew",
+        "fullTitle",
+        "id",
+        "imDbRating",
+        "imDbRatingCount",
+        "image",
+        "rank",
+        "title",
+        "year"
+      ],
+      "title": "Item"
     }
   }
-
+}
