@@ -20,7 +20,7 @@ namespace CovidTracker.Pages
 
                 try
                 {
-                    moviesData = webClient.DownloadString("https://imdb-api.com/en/API/Top250Movies/k_emiixec6");
+                    moviesData = webClient.DownloadString("https://imdb-api.com/en/API/Top250Movies/k_ytuk7yca");
                     var moviesRecommendations = MoviesRecommendations.FromJson(moviesData);
 
                     if (!string.IsNullOrWhiteSpace(query))
@@ -42,7 +42,6 @@ namespace CovidTracker.Pages
                         ViewData["MoviesRecommendations"] = moviesRecommendations.Items.ToList();
                     }
                     SearchTerm = query;
-
                 }
                 catch (Exception ex)
                 {

@@ -110,7 +110,16 @@ body {
     background-color: aliceblue;
 }
 
+.card-height {
+    height: 270px;
+}
+
 .chart-height {
     height: 750px;
+}
+
+.icon {
+    height: 15px;
+    width: 15px;
 }
 
