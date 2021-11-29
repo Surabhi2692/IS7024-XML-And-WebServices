@@ -31,7 +31,7 @@ namespace CovidTracker.Pages
                     covid19Data = webClient.DownloadString("https://data.cdc.gov/resource/rh2h-3yt2.json");
                     var covid19Vaccines = Covid19Vaccine.FromJson(covid19Data);
 
-                    if (!string.IsNullOrWhiteSpace(query))
+                    if (!string.IsNullOrWhiteSpace(query) && covid19Vaccines != null)
                     {
                         var covid19VaccineList = covid19Vaccines.ToList();
                         var stateWiseVaccines = covid19VaccineList.FindAll(x => string.Equals(x.Location, query, StringComparison.OrdinalIgnoreCase)).Where(x => x.DateType == DateType.Report).ToList();

@@ -31,7 +31,7 @@ namespace CovidTracker.Pages
                     covid19Data = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
                     var covid19CasesAndDeaths = Covid19CasesAndDeaths.FromJson(covid19Data);
 
-                    if (!string.IsNullOrWhiteSpace(query))
+                    if (!string.IsNullOrWhiteSpace(query) && covid19CasesAndDeaths != null)
                     {
                         var covidCasesAndDeathList = covid19CasesAndDeaths.ToList();
                         var stateWiseCasesAndDeaths = covidCasesAndDeathList.FindAll(x => string.Equals(x.State.ToString(), query, StringComparison.OrdinalIgnoreCase));
