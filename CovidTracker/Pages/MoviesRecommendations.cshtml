@@ -18,7 +18,7 @@
         <form method="get" class="mb-3">
             <div class="input-group row justify-content-center">
                 <label for="SearchTerm" class="control-label col-md-2 font-weight-bold">Enter Movie Title</label>
-                <input id="SearchTerm" class="form-control" name="query" value="@Model.SearchTerm" type="text"/>
+                <input id="SearchTerm" class="form-control" name="query" value="@Model.SearchTerm" type="text" />
                 <input type="submit" value="Search" class="btn btn-outline-secondary input-group-append" />
             </div>
         </form>
@@ -26,7 +26,10 @@
 
     @if (moviesRecommendations == null)
     {
-        <div class="alert alert-info">Movies with title "@Model.SearchTerm" not found. </div>
+        if (!string.IsNullOrWhiteSpace(@Model.SearchTerm))
+        {
+            <div class="alert alert-info">Movies with title "@Model.SearchTerm" not found. </div>
+        }
     }
     else
     {
@@ -35,7 +38,7 @@
             {
                 <div class="col-md-6 mb-3">
                     <div class="card shadow border-0 card-style card-background">
-                        <div class="card-header">@movie.Title</div>            
+                        <div class="card-header">@movie.Title</div>
                         <div class="row">
                             <img class="col-md-4" src="@movie.Image" alt="@movie.Title" />
                             <div class="col-md-8">
@@ -66,7 +69,7 @@
                                         @movie.Rank
                                     </dd>
                                 </dl>
-                            </div>  
+                            </div>
                         </div>
                     </div>
                 </div>

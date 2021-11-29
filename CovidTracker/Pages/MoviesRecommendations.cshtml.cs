@@ -23,24 +23,32 @@ namespace CovidTracker.Pages
                     moviesData = webClient.DownloadString("https://imdb-api.com/en/API/Top250Movies/k_ytuk7yca");
                     var moviesRecommendations = MoviesRecommendations.FromJson(moviesData);
 
-                    if (!string.IsNullOrWhiteSpace(query) && moviesRecommendations != null && moviesRecommendations.Items != null)
+                    if (moviesRecommendations != null && moviesRecommendations.Items != null)
                     {
-                        var moviesRecommendationList = moviesRecommendations.Items.ToList();
-
-                        var titleBasedMovies = moviesRecommendationList.Where(x => x.FullTitle.Contains(query)).ToList();
-                        if (titleBasedMovies != null && titleBasedMovies.Count > 0)
+                        if (!string.IsNullOrWhiteSpace(query))
                         {
-                            ViewData["MoviesRecommendations"] = titleBasedMovies;
+                            var moviesRecommendationList = moviesRecommendations.Items.ToList();
+
+                            var titleBasedMovies = moviesRecommendationList.Where(x => x.FullTitle.Contains(query)).ToList();
+                            if (titleBasedMovies != null && titleBasedMovies.Count > 0)
+                            {
+                                ViewData["MoviesRecommendations"] = titleBasedMovies;
+                            }
+                            else
+                            {
+                                ViewData["MoviesRecommendations"] = null;
+                            }
                         }
                         else
                         {
-                            ViewData["MoviesRecommendations"] = null;
+                            ViewData["MoviesRecommendations"] = moviesRecommendations.Items.ToList();
                         }
                     }
                     else
                     {
-                        ViewData["MoviesRecommendations"] = moviesRecommendations.Items.ToList();
+                        ViewData["MoviesRecommendations"] = null;
                     }
+
                     SearchTerm = query;
                 }
                 catch (Exception ex)
