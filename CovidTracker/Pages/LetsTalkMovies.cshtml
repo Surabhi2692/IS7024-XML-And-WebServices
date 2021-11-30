@@ -1,0 +1,85 @@
+﻿@page
+@model CovidTracker.Pages.LetsTalkMoviesModel
+@{
+    List<CovidTracker.Pages.LetsTalkMoviesModel.FavoriteMovie> favoriteMovies = (List<CovidTracker.Pages.LetsTalkMoviesModel.FavoriteMovie>)ViewData["FavoriteMoviesList"];
+}
+
+<div class="container pt-4">
+    <div class="card shadow border-0 mb-5">
+        <div class="card-header"><strong>Tell us about your favorite movie</strong></div>
+        <div class="card-body">
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="Form.FirstName" class="control-label"></label>
+                    <input asp-for="Form.FirstName" class="form-control clearable" />
+                    <span asp-validation-for="Form.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Form.LastName" class="control-label"></label>
+                    <input asp-for="Form.LastName" class="form-control clearable" />
+                    <span asp-validation-for="Form.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Form.DateOfBirth" class="control-label"></label>
+                    <input asp-for="Form.DateOfBirth" class="form-control" />
+                    <span asp-validation-for="Form.DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Form.EmailAddress" class="control-label"></label>
+                    <input asp-for="Form.EmailAddress" class="form-control" />
+                    <span asp-validation-for="Form.EmailAddress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Form.MovieName" class="control-label"></label>
+                    <input asp-for="Form.MovieName" class="form-control clearable" />
+                    <span asp-validation-for="Form.MovieName" class="text-danger"></span>
+                </div>
+                <div>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        @if (favoriteMovies != null && favoriteMovies.Count > 0)
+        {
+            <table class="table table-hover">
+                <thead class="text-light bg-dark">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Age
+                        </th>
+                        <th>
+                            Email Address
+                        </th>
+                        <th>
+                            Movie
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var movie in favoriteMovies)
+                    {
+                        <tr>
+                            <td>
+                                @movie.FullName
+                            </td>
+                            <td>
+                                @movie.Age
+                            </td>
+                            <td>
+                                @movie.EmailEddress
+                            </td>
+                            <td>
+                                @movie.MovieName
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
