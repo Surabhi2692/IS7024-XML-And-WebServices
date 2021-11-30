@@ -20,16 +20,16 @@ namespace CovidTracker.Pages
 
                 try
                 {
-                    moviesData = webClient.DownloadString("https://raw.githubusercontent.com/Anukriti007/XMLProjectIS/master/Top250Movies.json");
+                    moviesData = webClient.DownloadString("https://xmlprojectis20211128205504.azurewebsites.net/Top250Movies");
                     var moviesRecommendations = MoviesRecommendations.FromJson(moviesData);
 
-                    if (moviesRecommendations != null && moviesRecommendations.Items != null)
+                    if (moviesRecommendations != null)
                     {
                         if (!string.IsNullOrWhiteSpace(query))
                         {
-                            var moviesRecommendationList = moviesRecommendations.Items.ToList();
+                            var moviesRecommendationList = moviesRecommendations.ToList();
 
-                            var titleBasedMovies = moviesRecommendationList.Where(x => x.FullTitle.Contains(query)).ToList();
+                            var titleBasedMovies = moviesRecommendationList.Where(x => x.FullTitle.ToUpper().Contains(query.ToUpper())).ToList();
                             if (titleBasedMovies != null && titleBasedMovies.Count > 0)
                             {
                                 ViewData["MoviesRecommendations"] = titleBasedMovies;
@@ -41,7 +41,7 @@ namespace CovidTracker.Pages
                         }
                         else
                         {
-                            ViewData["MoviesRecommendations"] = moviesRecommendations.Items.ToList();
+                            ViewData["MoviesRecommendations"] = moviesRecommendations.ToList();
                         }
                     }
                     else
