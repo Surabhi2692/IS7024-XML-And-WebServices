@@ -1,28 +1,11 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/MoviesRecommendations",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/MoviesRecommendation"
+  },
   "definitions": {
-    "MoviesRecommendations": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Item"
-          }
-        },
-        "errorMessage": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "errorMessage",
-        "items"
-      ],
-      "title": "MoviesRecommendations"
-    },
-    "Item": {
+    "MoviesRecommendation": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -30,8 +13,7 @@
           "type": "string"
         },
         "rank": {
-          "type": "string",
-          "format": "integer"
+          "type": "integer"
         },
         "title": {
           "type": "string"
@@ -40,8 +22,7 @@
           "type": "string"
         },
         "year": {
-          "type": "string",
-          "format": "integer"
+          "type": "integer"
         },
         "image": {
           "type": "string",
@@ -60,8 +41,7 @@
           "type": "string"
         },
         "imDbRatingCount": {
-          "type": "string",
-          "format": "integer"
+          "type": "integer"
         }
       },
       "required": [
@@ -75,7 +55,7 @@
         "title",
         "year"
       ],
-      "title": "Item"
+      "title": "MoviesRecommendation"
     }
   }
 }
