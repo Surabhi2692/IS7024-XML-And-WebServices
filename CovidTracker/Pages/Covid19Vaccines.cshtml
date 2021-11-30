@@ -4,135 +4,131 @@
     CovidTracker.Vaccines.Covid19Vaccine covid19Vaccines = (CovidTracker.Vaccines.Covid19Vaccine)ViewData["Covid19Vaccines"];
 }
 
-<div class="container">
-    <br />
-    <h2>COVID19 Vaccines</h2>
-    <div>
-        <form method="get" class="row mb-3 ml-1">
-            <div class="input-group row">
-                <div class="col-sm-2 font-weight-bold">Choose State</div>
-                <select class="form-control" name="query" asp-for="@Model.SearchState" asp-items="ViewBag.SearchState"></select>
-                <div class="input-group-append">
-                    <input type="submit" value="Search" class="btn btn-outline-secondary" />
-                </div>
+<div class="container pt-4">
+    <form method="get" class="row mb-3 ml-1">
+        <div class="input-group row">
+            <div class="col-sm-2 font-weight-bold">Choose State</div>
+            <select class="form-control" name="query" asp-for="@Model.SearchState" asp-items="ViewBag.SearchState"></select>
+            <div class="input-group-append">
+                <input type="submit" value="Search" class="btn btn-outline-secondary" />
             </div>
-        </form>
+        </div>
+    </form>
 
-        @if (string.IsNullOrWhiteSpace(Model.SearchState))
-        {
+    @if (string.IsNullOrWhiteSpace(Model.SearchState))
+    {
 
-        }
-        else if (covid19Vaccines == null)
-        {
-            <div class="alert alert-info">COVID19 Data for @Model.statesDictionary[@Model.SearchState] not found.</div>
-        }
-        else
-        {
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="card card-body shadow border-0 card-background" >
-                        <div class="subtitle lead">
-                            CUMULATIVE
-                        </div>
-                        <hr />
-                        <dl class="row">
-                            <dt class="col-sm-6">
-                                Date
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.Date.Date.ToShortDateString()
-                            </dd>
-                            <dt class="col-sm-6">
-                                State
-                            </dt>
-                            <dd class="col-sm-6">
-                                @Model.statesDictionary[covid19Vaccines.Location.ToUpper()]
-                            </dd>
-                            <dt class="col-sm-6">
-                                Total Doses Administered
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.AdministeredCumulative
-                            </dd>
-                            <dt class="col-sm-6">
-                                Totat Dose 1 Administered
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.AdminDose1_Cumulative
-                            </dd>
-                            <dt class="col-sm-6">
-                                Total Series Complete
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.SeriesCompleteCumulative
-                            </dd>
-                            <dt class="col-sm-6">
-                                Total Booster Doses Administered
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.BoosterCumulative
-                            </dd>
-                        </dl>
+    }
+    else if (covid19Vaccines == null)
+    {
+        <div class="alert alert-info">COVID19 Data for @Model.statesDictionary[@Model.SearchState] not found.</div>
+    }
+    else
+    {
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="card card-body shadow border-0 card-background" >
+                    <div class="subtitle lead">
+                        CUMULATIVE
                     </div>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-6">
+                            Date
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.Date.Date.ToShortDateString()
+                        </dd>
+                        <dt class="col-sm-6">
+                            State
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Model.statesDictionary[covid19Vaccines.Location.ToUpper()]
+                        </dd>
+                        <dt class="col-sm-6">
+                            Total Doses Administered
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.AdministeredCumulative
+                        </dd>
+                        <dt class="col-sm-6">
+                            Totat Dose 1 Administered
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.AdminDose1_Cumulative
+                        </dd>
+                        <dt class="col-sm-6">
+                            Total Series Complete
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.SeriesCompleteCumulative
+                        </dd>
+                        <dt class="col-sm-6">
+                            Total Booster Doses Administered
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.BoosterCumulative
+                        </dd>
+                    </dl>
                 </div>
+            </div>
 
-                <div class="col-md-6">
-                    <div class="card card-body shadow border-0 card-background" >
-                        <div class="subtitle lead">
-                            DAILY
-                        </div>
-                        <hr />
-                        <dl class="row">
-                            <dt class="col-sm-6">
-                                Date
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.Date.Date.ToShortDateString()
-                            </dd>
-                            <dt class="col-sm-6">
-                                State
-                            </dt>
-                            <dd class="col-sm-6">
-                                @Model.statesDictionary[covid19Vaccines.Location.ToUpper()]
-                            </dd>
-                            <dt class="col-sm-6">
-                                Daily Doses Administered
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.AdministeredDaily
-                            </dd>
-                            <dt class="col-sm-6">
-                                Daily Dose 1 Administered
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.AdminDose1_Daily
-                            </dd>
-                            <dt class="col-sm-6">
-                                Daily Series Complete
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.SeriesCompleteDaily
-                            </dd>
-                            <dt class="col-sm-6">
-                                Daily Booster Doses Administered
-                            </dt>
-                            <dd class="col-sm-6">
-                                @covid19Vaccines.BoosterDaily
-                            </dd>
-                        </dl>
+            <div class="col-md-6">
+                <div class="card card-body shadow border-0 card-background" >
+                    <div class="subtitle lead">
+                        DAILY
                     </div>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-6">
+                            Date
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.Date.Date.ToShortDateString()
+                        </dd>
+                        <dt class="col-sm-6">
+                            State
+                        </dt>
+                        <dd class="col-sm-6">
+                            @Model.statesDictionary[covid19Vaccines.Location.ToUpper()]
+                        </dd>
+                        <dt class="col-sm-6">
+                            Daily Doses Administered
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.AdministeredDaily
+                        </dd>
+                        <dt class="col-sm-6">
+                            Daily Dose 1 Administered
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.AdminDose1_Daily
+                        </dd>
+                        <dt class="col-sm-6">
+                            Daily Series Complete
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.SeriesCompleteDaily
+                        </dd>
+                        <dt class="col-sm-6">
+                            Daily Booster Doses Administered
+                        </dt>
+                        <dd class="col-sm-6">
+                            @covid19Vaccines.BoosterDaily
+                        </dd>
+                    </dl>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="covid19DosesChart" class="chart-height"></div>
-                </div>
-                <div class="col-md-6">
-                    <div id="covid19SeriesChart" class="chart-height"></div>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="covid19DosesChart" class="chart-height"></div>
             </div>
-        }
-    </div>
+            <div class="col-md-6">
+                <div id="covid19SeriesChart" class="chart-height"></div>
+            </div>
+        </div>
+    }
 </div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

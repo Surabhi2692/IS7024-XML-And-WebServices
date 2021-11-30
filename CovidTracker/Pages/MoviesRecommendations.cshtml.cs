@@ -20,7 +20,7 @@ namespace CovidTracker.Pages
 
                 try
                 {
-                    moviesData = webClient.DownloadString("https://imdb-api.com/en/API/Top250Movies/k_ytuk7yca");
+                    moviesData = webClient.DownloadString("https://raw.githubusercontent.com/Anukriti007/XMLProjectIS/master/Top250Movies.json");
                     var moviesRecommendations = MoviesRecommendations.FromJson(moviesData);
 
                     if (moviesRecommendations != null && moviesRecommendations.Items != null)
